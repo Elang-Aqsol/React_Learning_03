@@ -3,23 +3,33 @@ import PropTypes from "prop-types";
 const skillData = [
   {
     skill: "React",
-    emoji: "💪",
-    color: "blue",
+    level: "beginner",
+    color: "#6633ff",
   },
   {
     skill: "HTML+CSS",
-    emoji: "💪",
-    color: "orange",
+    level: "advanced",
+    color: "#e07b39",
   },
   {
     skill: "JavaScript",
-    emoji: "💪",
-    color: "yellow",
+    level: "intermediate",
+    color: "#f8bd63",
   },
   {
     skill: "Svelte",
-    emoji: "👶",
-    color: "orangered",
+    level: "beginner",
+    color: "#ff3333",
+  },
+  {
+    skill: "Web Design",
+    level: "advanced",
+    color: "#33ff99",
+  },
+  {
+    skill: "Git & Github",
+    level: "intermediate",
+    color: "#A03232",
   },
 ];
 
@@ -31,7 +41,7 @@ export default function Skill() {
           <NewSkill
             key={index}
             skill={skill.skill}
-            emoji={skill.emoji}
+            level={skill.level}
             color={skill.color}
           />
         ))}
@@ -40,12 +50,18 @@ export default function Skill() {
   );
 }
 
-const NewSkill = ({ skill, emoji, color }) => {
+const NewSkill = ({ skill, level, color }) => {
   return (
     <>
       <div className="skill" style={{ backgroundColor: color }}>
         <span>{skill}</span>
-        <span>{emoji}</span>
+        <span>
+          {level === "beginner"
+            ? "🤓"
+            : level === "intermediate"
+            ? "👦"
+            : level === "advanced" && "👨‍🎓"}
+        </span>
       </div>
     </>
   );
@@ -53,6 +69,6 @@ const NewSkill = ({ skill, emoji, color }) => {
 
 NewSkill.propTypes = {
   skill: PropTypes.string,
-  emoji: PropTypes.string,
+  level: PropTypes.string,
   color: PropTypes.string,
 };
